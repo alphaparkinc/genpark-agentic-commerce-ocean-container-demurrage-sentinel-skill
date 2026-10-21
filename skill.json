@@ -1,0 +1,67 @@
+{
+  "name": "genpark-agentic-commerce-ocean-container-demurrage-sentinel-skill",
+  "version": "1.0.0",
+  "title": "Ocean Container Demurrage & Detention Free-Time Countdown Sentinel Skill",
+  "description": "Ocean container free time window countdown, port gate-in/gate-out turnaround, demurrage per-diem accrual curve, and chassis split fee audit. Built for GenPark (https://www.genpark.ai).",
+  "homepage": "https://www.genpark.ai",
+  "linkedin": "https://www.linkedin.com/company/92955550",
+  "category": "agentic-commerce",
+  "topics": [
+    "demurrage",
+    "detention",
+    "ocean-shipping",
+    "container-logistics",
+    "agentic-commerce",
+    "model-context-protocol",
+    "genpark"
+  ],
+  "tools": [
+    {
+      "name": "track_demurrage_detention_accrual",
+      "description": "Calculate daily demurrage and detention penal accruals once port or equipment free time expires.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "vessel_discharge_epoch": {
+            "type": "integer"
+          },
+          "current_epoch": {
+            "type": "integer"
+          },
+          "port_free_days": {
+            "type": "integer"
+          },
+          "demurrage_daily_tier1_usd": {
+            "type": "number"
+          },
+          "demurrage_daily_tier2_usd": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "vessel_discharge_epoch",
+          "current_epoch",
+          "port_free_days"
+        ]
+      }
+    },
+    {
+      "name": "recommend_urgent_drayage_evacuation_priority",
+      "description": "Rank active containers at port terminal by financial burn rate to dispatch emergency drayage truckers.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "container_fleet": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          }
+        },
+        "required": [
+          "container_fleet"
+        ]
+      }
+    }
+  ]
+}
